@@ -11,7 +11,7 @@ album.save_lyrics()
 album_json = json.load(open('Lyrics_Midnights3amEdition.json'))
 
 # Create a file to write midnight lyrics
-midnights = open('data/taylorswift_lyrics/10-midnights_3am_edition','w')
+midnights = open('data/taylorswift_lyrics/10-midnights_3am_edition.csv','w')
 midnights.write('album_name,track_title,track_n,lyric,line\n') # column titles ??
 # Iterate through each track
 for i in range(len(album_json['tracks'])):
