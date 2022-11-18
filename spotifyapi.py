@@ -13,8 +13,10 @@ midnight= defaultdict(list)
 client_credentials_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
+print("problem before calling")
 tracks = sp.album_tracks(album_uri)
 
+print("problem after calling")
 for n in range(len(tracks['items'])):
     album= "Midnights (3am Edition)"
     artist= "Taylor Swift"
@@ -49,8 +51,11 @@ for n in range(len(tracks['items'])):
     midnight[name].append(valence)
     midnight[name].append(tempo)
     
-
-midnight_spot= pd.DataFrame.from_dict(midnight, orient= 'index')
+column_names= ['album', 'artist', 'release_data', 'length', 'popularity', 'danceability', 'acousticness', 'energy', 'instrumentalness', 'liveness', 'loudness', 'speechiness', 'valence', 'tempo']
+print('reached here')
+midnight_spot= pd.DataFrame.from_dict(midnight, orient= 'index', columns= column_names)
+midnight_spot.index.name= 'name'
+midnight_spot.set_index('')
 
 midnight_spot.to_csv('midnight_spotify.csv', index= True)
 #print(tracks['items'][0][''])
