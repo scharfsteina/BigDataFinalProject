@@ -15,9 +15,9 @@ import os
 #df_concat
 
 
-taylor_swift= pd.read_csv(r'C:\Users\aimiw\OneDrive\Desktop\Big Data\BigDataFinalProject\data\taylorswift_lyrics\01-taylor_swift.csv')
+taylor_swift= pd.read_csv(r'C:\Users\aimiw\OneDrive\Desktop\Big Data\BigDataFinalProject\data\genius.csv')
 #print(taylor_swift)
 taylor_swift_edited= taylor_swift.drop('line', axis= 1)
-taylor_swift_edited = taylor_swift_edited.groupby(['track_title'])['lyric'].apply(' '.join).reset_index()
+taylor_swift_edited = taylor_swift_edited.groupby(['track_title', 'album_name'])['lyric'].apply(' '.join).reset_index()
 
-taylor_swift_edited.to_csv('taylor_swift_combined_edited.csv', index= True)
+taylor_swift_edited.to_csv('lyric_combined.csv', index= True)
