@@ -1,23 +1,25 @@
+# Importing Packages
 import pandas as pd
-import glob
+import numpy as np
 import os
 
-#cwd= os.path.abspath(r'data\taylorswift_lyrics')
-#print('hello', cwd)
-#file_list= os.listdir(cwd)
-#print(file_list)
+# Load spotify data
+spotify_data = pd.read_csv('data/spotify.csv')
 
-#for filename in os.listdir(cwd): 
-    #print(filename)
-    #df= pd.read_csv(filename)
-    #df_concat= pd.concat([pd.read_csv(filename)], ignore_index= True)
+# Load lyric data from kaggle dataset
+lyrics_path = "data/taylorswift_lyrics"
+albums = []
+for album_csv in os.listdir(lyrics_path):
+    album = pd.read_csv(f"{lyrics_path}/{album_csv}", on_bad_lines='skip')
+    albums.append(album)
+genius_data = pd.concat(albums, ignore_index = True)
 
-#df_concat
+# Merge all lyric lines together
+genius_data = genius_data.drop('line', axis= 1)
+genius_data = genius_data.groupby(['track_title', 'album_name'])['lyric'].apply(' '.join).reset_index()
 
+# Save genius data to csv
+genius_data.to_csv('data/genius.csv', index= True)
 
-taylor_swift= pd.read_csv(r'C:\Users\aimiw\OneDrive\Desktop\Big Data\BigDataFinalProject\data\genius.csv')
-#print(taylor_swift)
-taylor_swift_edited= taylor_swift.drop('line', axis= 1)
-taylor_swift_edited = taylor_swift_edited.groupby(['track_title', 'album_name'])['lyric'].apply(' '.join).reset_index()
-
-taylor_swift_edited.to_csv('lyric_combined.csv', index= True)
+# Our merged datasets are now stored in spotify.csv and genius.csv
+# and spotify_data and genius_data respectively
