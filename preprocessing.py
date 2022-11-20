@@ -7,6 +7,7 @@ import os
 spotify_data = pd.read_csv('data/spotify.csv')
 
 # Load lyric data from kaggle dataset
+# Combine genius lyrics datafiles together
 lyrics_path = "data/taylorswift_lyrics"
 albums = []
 for album_csv in os.listdir(lyrics_path):
@@ -14,12 +15,15 @@ for album_csv in os.listdir(lyrics_path):
     albums.append(album)
 genius_data = pd.concat(albums, ignore_index = True)
 
-# Merge all lyric lines together
+# Merge lyric lines together from the same song
 genius_data = genius_data.drop('line', axis= 1)
 genius_data = genius_data.groupby(['track_title', 'album_name'])['lyric'].apply(' '.join).reset_index()
 
 # Save genius data to csv
 genius_data.to_csv('data/genius.csv', index= True)
 
-# Our merged datasets are now stored in spotify.csv and genius.csv
-# and spotify_data and genius_data respectively
+# Load in billboard data
+billboard_data = pd.read_csv('data/billboard.csv')
+
+# Our merged datasets are now stored in spotify.csv, genius.csv, and billboard.csv
+# and spotify_data, genius_data, and billboard_data respectively
