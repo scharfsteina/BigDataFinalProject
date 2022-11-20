@@ -6,9 +6,9 @@ import json, re, os
 genius = lyricsgenius.Genius('Bearer FjQostjLTcPJ4d4DZI6_ms4KrhA_wovfHJ2siG7rl1cUbHQ_2_Xl__4BGk_3-2Kv')
 album = genius.search_album("Midnights (3am Edition)", "Taylor Swift")
 # Save album as a json file
-album.save_lyrics()
+album.save_lyrics('data')
 # Get the saved json file
-album_json = json.load(open('Lyrics_Midnights3amEdition.json'))
+album_json = json.load(open('data/Lyrics_Midnights3amEdition.json'))
 
 # Create a file to write midnight lyrics
 midnights = open('data/taylorswift_lyrics/10-midnights_3am_edition.csv','w')

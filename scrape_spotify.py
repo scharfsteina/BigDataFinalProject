@@ -43,10 +43,11 @@ for n in range(album_size):
 
 
 midnight_spot = pd.DataFrame.from_dict(track_data)
-# saving the midnight spotify data so we don't have to scrape again
+# Saving the midnight spotify data so we don't have to scrape again
 midnight_spot.to_csv('data/spotify_midnights.csv', index = True)
+
+# merge midnights with all the other albums
 other_albums = pd.read_csv('data/spotify_taylorswift.csv')
 spotify = pd.concat([other_albums, midnight_spot], ignore_index = True)
 spotify = spotify.drop(columns = ["index"])
-# Convert song length from ms to minutes
 spotify.to_csv('data/spotify.csv')
