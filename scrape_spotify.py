@@ -22,7 +22,7 @@ album_size = len(tracks['items'])
 # Track Data dictionary
 track_data = {"name": [], "album": [album]*album_size, "artist": [artist]*album_size, "release_date":[release_date]*album_size, "length": [],"popularity": [], "danceability": [], "acousticness": [], "energy": [], "instrumentalness": [], "liveness": [], "loudness": [], "speechiness": [], "valence": [], "tempo": []}
 
-# Function to add a feature and its value to tarck_data
+# Function to add a feature and its value to track_data
 def add_data(feature, value):
     if len(track_data[feature]) == 0:
         track_data[feature] = [value]

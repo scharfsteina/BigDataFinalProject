@@ -2,6 +2,8 @@
 import pandas as pd
 import numpy as np
 import os
+from sklearn.feature_extraction.text import TfidfVectorizer
+
 
 # Load spotify data
 spotify_data = pd.read_csv('data/spotify.csv')
@@ -27,3 +29,14 @@ billboard_data = pd.read_csv('data/billboard.csv')
 
 # Our merged datasets are now stored in spotify.csv, genius.csv, and billboard.csv
 # and spotify_data, genius_data, and billboard_data respectively
+
+
+# TFIDF Vectorization of lyrics
+v = TfidfVectorizer()
+x = v.fit_transform(genius_data['lyric'])
+
+tfidf_df = pd.DataFrame(x.toarray(), index = genius_data['track_title'], columns= v.get_feature_names_out())
+tfidf_df.to_csv('data/tfidf_embedding.csv', index= True)
+
+
+
