@@ -34,4 +34,4 @@ for i in range(len(album_json['tracks'])):
 
     for line in range(len(lyrics)):
         # Write album name, track title, track number, lyric, and line to midnights file
-        midnights.write("Midnights,%s,%i,%s,%i\n" % (title,i,lyrics[line],line+1))
+        midnights.write("Midnights (3am Edition),%s,%i,%s,%i\n" % (title,i,lyrics[line],line+1))
