@@ -5,14 +5,13 @@ import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
 
 # Load data
-spotify = pd.read_csv('data/spotify.csv')
-genius = pd.read_csv('data/genius.csv')
+data = pd.read_csv('data/merged.csv')
 #billboard = pd.read_csv('data/billboard.csv')
 genius_tfidf = pd.read_csv('data/tfidf_embedding.csv')
 
 # Function to get album
-def get_album(song, spotify):
-	return (spotify.loc[spotify.name == song,'album']).to_string(index=False)
+def get_album(song, data):
+	return (data.loc[data.name == song,'album']).to_string(index=False)
 
 tfidf_df = genius_tfidf.loc[:, genius_tfidf.columns != 'track_title']
 
@@ -40,20 +39,13 @@ def cluster_kmeans(n):
 	x0 = pca_vecs[:, 0]
 	x1 = pca_vecs[:, 1]
 	print(pca.explained_variance_ratio_)
-	genius['cluster'] = clusters
+	genius['cluster'] =
 	genius['x0'] = x0
 	genius['x1'] = x1
 
-#albums = [get_album(song, spotify) for song in genius["track_title"]]
-#print(albums)
 
-cluster_kmeans(10)
+#cluster_kmeans(10)
 
-#album_genius = [album for album in genius['album_name']]
-
-#album_spotify = [album for album in spotify['album']]
-
-#print(set(album_genius)^(set(album_spotify)))
 # # set image size
 plt.figure(figsize=(12, 7))
 # set title
