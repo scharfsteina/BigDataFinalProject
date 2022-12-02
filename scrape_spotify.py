@@ -46,8 +46,10 @@ midnight_spot = pd.DataFrame.from_dict(track_data)
 # Saving the midnight spotify data so we don't have to scrape again
 midnight_spot.to_csv('data/spotify_midnights.csv', index = True)
 
+#midnight_spot = pd.read_csv('data/spotify_midnights.csv')
+
 # merge midnights with all the other albums
 other_albums = pd.read_csv('data/spotify_taylorswift.csv')
-spotify = pd.concat([other_albums, midnight_spot], ignore_index = True)
-spotify = spotify.drop(columns = ["index"])
+spotify = pd.concat([other_albums, midnight_spot])
+spotify = spotify.drop(columns = spotify.columns[0])
 spotify.to_csv('data/spotify.csv')

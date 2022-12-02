@@ -30,12 +30,12 @@ for i, song in enumerate(genius_data['track_title']):
 genius_data.to_csv('data/genius.csv', index= True)
 
 # Clean spotify data
-# for i, song in enumerate(spotify_data['name']):
-#     # removing parentheses, brackets, dashes, and weird symbols from kaggle genius dataset, converting to lower case
-#     spotify_data.loc[i, 'name'] = re.sub("|\-(.*)|[\(\[].*?[\)\]]",'', song).lower().replace('\u200b','')
+for i, song in enumerate(spotify_data['name']):
+    # removing parentheses, brackets, dashes, and weird symbols from kaggle genius dataset, converting to lower case
+    spotify_data.loc[i, 'name'] = re.sub("|\-(.*)|[\(\[].*?[\)\]]",'', song).lower().replace('\u200b','')
 
-spotify_data = spotify_data.drop([spotify_data.columns[0],spotify_data.columns[1]], axis= 1)
-spotify_data.to_csv('data/spotify.csv', index= True) # update spotify csv file to cleaned version
+spotify_data = spotify_data.drop([spotify_data.columns[0]], axis= 1)
+#spotify_data.to_csv('data/spotify.csv', index= True) # update spotify csv file to cleaned version
 
 # Merge spotify and genius data
 temp = genius_data.copy()

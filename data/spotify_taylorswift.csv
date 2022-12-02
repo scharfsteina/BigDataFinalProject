@@ -1,4 +1,4 @@
-index,name,album,artist,release_date,length,popularity,danceability,acousticness,energy,instrumentalness,liveness,loudness,speechiness,valence,tempo
+,name,album,artist,release_date,length,popularity,danceability,acousticness,energy,instrumentalness,liveness,loudness,speechiness,valence,tempo
 0,Tim McGraw,Taylor Swift,Taylor Swift,2006-10-24,232106,49,0.58,0.575,0.491,0.0,0.121,-6.462,0.0251,0.425,76.009
 1,Picture To Burn,Taylor Swift,Taylor Swift,2006-10-24,173066,54,0.658,0.173,0.877,0.0,0.0962,-2.098,0.0323,0.821,105.586
 2,Teardrops On My Guitar - Radio Single Remix,Taylor Swift,Taylor Swift,2006-10-24,203040,59,0.621,0.288,0.417,0.0,0.119,-6.941,0.0231,0.289,99.953
