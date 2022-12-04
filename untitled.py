@@ -22,7 +22,7 @@ for i, row in billboard.iterrows():
 billboard = billboard.drop(billboard.index[remove])
 billboard = billboard.reset_index()
 billboard = billboard.drop([billboard.columns[0],billboard.columns[1],'taylors version'], axis= 1)
-billboard.to_csv('data/billboard_cleaned.csv')
+#billboard.to_csv('data/billboard_cleaned.csv')
 temp = billboard.copy()
 temp = temp.rename(columns = {'song':'name'})
 merged = pd.merge(merged,temp, on=['name'], how = 'left')
